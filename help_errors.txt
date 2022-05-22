@@ -1,0 +1,3 @@
+missing arguments: parameter missing in url (e.g.: ?email)
+user not found: user wasn't found in db
+wrong password: self-explanatory
