@@ -38,14 +38,14 @@ def get_usuario():
     try:
         email = request.args['email']
     except:
-        return args
+        return { 'help': 'missing arguments', 'success': False }
 
-    curr.execute(f"SELECT id_usuario, nome, email FROM usuarios WHERE email='{email}'")
+    curr.execute("SELECT id_usuario, nome, email FROM usuarios WHERE email=%s", [email])
     data = []
     ret = {}
 
     try:
-        data = curr.fetchall()[0]
+        data = curr.fetchone()
 
         ret = {
             'id': data[0],
@@ -56,6 +56,33 @@ def get_usuario():
         return ret
 
     return ret
+
+
+@app.route('/api/cadastrar_usuario')
+def cadastrar_usuario():
+    args = request.args
+
+    nome = ''
+    email = ''
+    senha = ''
+    try:
+        nome = args['nome']
+        email = args['email']
+        senha = args['senha']
+    except:
+        return { 'help': 'missing arguments', 'success': False }
+    
+    curr.execute("SELECT email FROM usuarios WHERE email=%s", [email])
+    data = []
+    try:
+        data = curr.fetchall()[0]
+        if len(data) > 0:
+            return { 'help': 'email already used', 'success': False }
+    except:
+        curr.execute("INSERT INTO usuarios (nome, email, senha) VALUES (%s, %s, %s)", [nome, email, senha])
+        conn.commit()
+        return { 'success': True }
+
 
 
 if __name__ == '__main__':
