@@ -5,6 +5,7 @@ import Pedidos from "./Pedidos";
 import Layout from "./Layout";
 import Sobre from "./Sobre";
 import Home from "./Home";
+import Conta from "./Conta";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="sobre" element={<Sobre />} />
             <Route path="pedidos" element={<Pedidos />} />
+            <Route path="conta" element={<Conta />} />
           </Route>
         </Routes>
       </BrowserRouter>
