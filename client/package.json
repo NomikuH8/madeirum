@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://0.0.0.0:5000",
-  "homepage": "client/build",
+  "homepage": ".",
   "dependencies": {
     "@mui/icons-material": "^5.8.0",
     "@svgr/webpack": "^6.2.1",
@@ -45,8 +45,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/styled-components": "^5.1.25"
   }
 }

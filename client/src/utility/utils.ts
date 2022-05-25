@@ -1,15 +1,15 @@
 export {
   getFile,
-  getProfileImage,
+  getImage,
 }
 
 const mainFolder = '/client/build/'
-const imageFolder = mainFolder + 'images/pfps/'
+const imageFolder = mainFolder + 'images/'
 
 function getFile(file: string) {
   return mainFolder + file
 }
 
-function getProfileImage(image: string) {
+function getImage(image: string) {
   return imageFolder + image
 }
