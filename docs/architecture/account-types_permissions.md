@@ -1,16 +1,36 @@
-Administrador:
+Administrador ('admin'):
 - Administrar tabelas como quiser
+
+- Cadastrar administradores
+- Alterar administradores
+- Apagar administradores
+
 - Cadastrar gerentes
+- Alterar gerentes
+- Apagar gerentes
+
 - Cadastrar funcionários
+- Alterar funcionários
+- Apagar funcionários
+
+- Cadastrar produtos
+- Alterar produtos
+- Apagar produtos
+
+- Marcar pedido como entregue
+- Excluir pedidos
+
+Gerente ('gerente'):
+- Cadastrar funcionários
+- Alterar funcionários
+- Apagar funcionários
 - Cadastrar produtos
 
-Gerente:
-- Cadastrar funcionários
-- Cadastrar produtos
+Funcionários ('funcionario'):
+- Fazer pedidos
+- Marcar pedido como entregue
+- Excluir pedidos
 
-Funcionários:
-- Mesmo que usuário
-- Nada especial
-
-Usuários:
-- Pedir lanche em seu endereço
+Usuários ('usuario'):
+- Cadastrar 
+- Fazer pedidos

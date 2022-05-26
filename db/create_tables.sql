@@ -10,6 +10,13 @@ CREATE TABLE
   );
 
 CREATE TABLE
+  IF NOT EXISTS usuario_auth (
+    id_token SERIAL PRIMARY KEY,
+    id_usuario INTEGER NOT NULL,
+    auth_token VARCHAR NOT NULL UNIQUE
+  );
+
+CREATE TABLE
   IF NOT EXISTS categorias (
     id_categoria SERIAL PRIMARY KEY,
     nome_categoria VARCHAR,
@@ -29,7 +36,8 @@ CREATE TABLE
 CREATE TABLE
   IF NOT EXISTS pedidos (
     id_pedido SERIAL PRIMARY KEY,
-    id_usuario INTEGER NOT NULL
+    id_usuario INTEGER NOT NULL,
+    entregue BOOLEAN NOT NULL
   );
 
 CREATE TABLE
