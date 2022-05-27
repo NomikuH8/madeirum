@@ -1,0 +1,8 @@
+server:
+- file upload
+
+client:
+- sign in page
+- login page
+- token cookie
+- auto logout (verify token)
