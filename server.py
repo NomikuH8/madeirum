@@ -7,6 +7,7 @@ from flask import request
 from flask import Flask
 import psycopg2
 import random
+import bcrypt
 import utils
 import sys
 import os
@@ -112,30 +113,40 @@ conn.commit()
 @app.route('/api/get_usuario')
 def get_usuario():
     args = request.args
-    email = ''
+    token = ''
     try:
-        email = request.args['email']
+        token = args['access_token']
     except:
         return { 'help': 'missing arguments', 'success': False }
 
-    curr.execute("SELECT id_usuario, nome, email FROM usuarios WHERE email=%s", [email])
+    curr.execute('SELECT id_usuario FROM usuarios_auth WHERE auth_token=%s', [token])
+
+    id_user = ''
+    try:
+        data = curr.fetchone()
+        id_user = data[0]
+    except:
+        return { 'help': 'userid  not found', 'success': False}
+        
+    curr.execute("SELECT id_usuario, nome, email, tipo_conta FROM usuarios WHERE id_usuario=%s", [id_user])
     data = []
     ret = {}
 
     try:
         data = curr.fetchone()
-
         ret = {
             'id': data[0],
             'nome': data[1],
             'email': data[2],
+            'tipo_conta': data[3]
         }
     except:
-        return ret
+        ret = { 'help': 'user not found', 'success': False}
 
     return ret
 
-@app.route('/api/cadastrar_usuario')
+
+@app.route('/api/cadastrar_usuario', methods=['POST'])
 def cadastrar_usuario():
     args = request.args
 
@@ -145,7 +156,7 @@ def cadastrar_usuario():
     try:
         nome = args['nome']
         email = args['email']
-        senha = args['senha']
+        senha = utils.encrypt_password(args['senha'])
     except:
         return { 'help': 'missing arguments', 'success': False }
     
@@ -156,50 +167,69 @@ def cadastrar_usuario():
         if len(data) > 0:
             return { 'help': 'email already used', 'success': False }
     except:
-        curr.execute("INSERT INTO usuarios (nome, email, senha, tipo_conta) VALUES (%s, %s, %s, %s)", [nome, email, senha, 'normal'])
-        conn.commit()
-        return { 'success': True }
+        try:
+            curr.execute("INSERT INTO usuarios (nome, email, senha, tipo_conta) VALUES (%s, %s, %s, %s)", [nome, email, senha, 'normal'])
+            conn.commit()
+            return { 'success': True }
+        except:
+            conn.rollback()
+            return { 'success': False }
+
 
 @app.route('/api/logar_usuario', methods=['POST'])
 def logar_usuario():
     args = request.args 
+
+    email = ''
+    senha = ''
+
     try:
         email = args['email']
         senha = args['senha']
     except:
         return { 'help': 'missing arguments', 'success': False }
     
-    curr.execute('SELECT id, senha FROM usuarios WHERE email=%s', [email])
+    curr.execute('SELECT id_usuario, nome, email, senha FROM usuarios WHERE email=%s', [email])
     data = []
     try:
         data = curr.fetchall()[0]
     except:
         return { 'help': 'user not found', 'success': False }
     
-    if data[1] != senha:
-        return { 'help': 'wrong password', 'success': False }
     
-    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'
-    randLength = 30
-    decryptedToken = ''.join(random.choice(alphabet) for i in range(randLength))
-    encryptedToken = utils.encryptText(decryptedToken)
+    if not utils.check_password(senha, data[3]):
+        return { 'help': 'wrong password', 'success': False }
 
-    resp = make_response(os.path.join(BUILD_PATH, 'index.html'))
-    resp.set_cookie('sessionToken', encryptedToken)
-
-    curr.execute('INSERT INTO usuarios_auth (id_usuario, auth_token) VALUES (%s, %s)', [data[0], encryptedToken])
+    
+    curr.execute('DELETE FROM usuarios_auth WHERE id_usuario = %s', [data[0]])
+    
+    conta_dict = {
+        'id_usuario': data[0],
+        'nome': data[1],
+        'email': data[2],
+        'senha': data[3]
+    }
+    token = utils.get_token(conta_dict)
+    
+    curr.execute('INSERT INTO usuarios_auth (id_usuario, auth_token) VALUES (%s, %s)', [data[0], token])
     conn.commit()
-    return resp
+    return {
+        'token': token
+    }
 
-@app.route('/api/deslogar_usuario')
+
+@app.route('/api/deslogar_usuario', methods=['POST'])
 def deslogar_usuario():
     args = request.args
     try:
-        email = args['email']
+        token = args['token']
     except:
         return { 'help': 'missing arguments', 'success': False }
     
-    # TODO: finish auth
+    curr.execute('DELETE FROM usuarios_auth WHERE auth_token = %s', [token])
+    conn.commit()
+    return { 'success': True }
+
 
 
 
@@ -209,6 +239,7 @@ def catch_all(path):
     if os.path.exists(path):
         return send_file(path)
     return send_file(os.path.join(BUILD_PATH, "index.html"))
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=PORT, debug=True, threaded=True)
