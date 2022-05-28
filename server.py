@@ -214,7 +214,8 @@ def logar_usuario():
     curr.execute('INSERT INTO usuarios_auth (id_usuario, auth_token) VALUES (%s, %s)', [data[0], token])
     conn.commit()
     return {
-        'token': token
+        'token': token,
+        'success': True
     }
 
 
