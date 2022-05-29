@@ -1,20 +1,19 @@
-import { Link, useNavigate } from 'react-router-dom'
-import Div from './styles/loginStyle'
-import { useCookies, withCookies } from 'react-cookie'
-import { useEffect, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import { useCookies, withCookies } from 'react-cookie';
+import { Link, useNavigate } from 'react-router-dom';
+import { checkLogin } from './utility/utils';
+import { useEffect, useState } from 'react';
+import Div from './styles/loginStyle';
 
 function Cadastro() {
   const [wentWrong, setWentWrong] = useState('')
-  const [cookies, setCookie] = useCookies(['access-token'])
+  const [cookies] = useCookies(['access-token'])
   const navi = useNavigate()
 
   useEffect(() => {
-    let token = cookies['access-token']
-    
-    if (token === null)
-      return
-    
-    navi('/inicio')
+    const token = cookies['access-token']
+    checkLogin(token, navi, setWentWrong)
   }, [])
 
   const enviarCadastro = async (e: any) => {

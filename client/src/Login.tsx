@@ -1,29 +1,20 @@
-import { Link, useNavigate } from 'react-router-dom'
-import Div from './styles/loginStyle'
-import { useEffect, useState } from 'react'
-import { useCookies, withCookies } from 'react-cookie'
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import { useCookies, withCookies } from 'react-cookie';
+import { Link, useNavigate } from 'react-router-dom';
+import { checkLogin } from './utility/utils';
+import { useEffect, useState } from 'react';
+import Div from './styles/loginStyle';
 
 function Login() {
   const [wentWrong, setWentWrong] = useState('')
   const [cookies, setCookie] = useCookies(['access-token'])
   const navi = useNavigate()
 
-  useEffect(() => {
-    let token = cookies['access-token']
-    
-    if (token === null)
-      return
-    
-    let data: any = fetch(`/api/get_usuario?access_token=${token}`)
-                .then(res => res.json())
-                .catch(reason => setWentWrong('Não foi possível verificar usuário já existente'))
-    
-    if (data.length > 0) {
-      navi('/inicio')
-      return
-    }
 
-    setWentWrong('Login expirado, realize-o de novo')
+  useEffect(() => {
+    const token = cookies['access-token']
+    checkLogin(token, navi, setWentWrong)
   }, [])
 
   const enviarLogin = async (e: any) => {

@@ -1,7 +1,5 @@
-import { useCookies, withCookies } from 'react-cookie'
 import { BrowserRouter } from "react-router-dom";
-import { Route, Routes, useNavigate } from "react-router";
-import { useEffect, useState } from 'react'
+import { Route, Routes } from "react-router";
 
 import Pesquisar from "./Pesquisar";
 import Cadastro from "./Cadastro";
@@ -14,28 +12,6 @@ import Root from "./Root";
 import Home from "./Home";
 
 function App() {
-  const [cookies, setCookie] = useCookies(['access-token'])
-  const navi = useNavigate()
-
-  useEffect(() => {
-    if (!(document.location.pathname === '/login' ||
-        document.location.pathname === '/cadastro'))
-        return
-
-    let token = cookies['access-token']
-    
-    if (token === null)
-      return
-    
-    let data: any = fetch(`/api/get_usuario?access_token=${token}`)
-                    .then(res => res.json())
-    
-    if (data.length > 0) {
-      navi('/inicio')
-      return
-    }
-  }, [])
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -56,4 +32,5 @@ function App() {
   );
 }
 
-export default withCookies(App);
+// export default withCookies(App);
+export default App

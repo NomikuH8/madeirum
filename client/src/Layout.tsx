@@ -1,20 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import {
-  Article,
-  ArticleOutlined,
-  Face,
-  FaceOutlined,
-  Home,
-  HomeOutlined,
-  Search,
-  SearchOutlined,
+  Face, FaceOutlined,
+  Home, HomeOutlined,
+  Search, SearchOutlined,
+  Article, ArticleOutlined,
 } from "@mui/icons-material"
-import { Outlet, useNavigate } from "react-router"
-import { ReactElement, useEffect, useState } from "react"
-import './css/layout.css'
+
+import { ReactElement, useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router";
+import { checkLogin } from "./utility/utils"; 
+import { useCookies } from "react-cookie";
+import './css/layout.css';
 
 function Layout() {
   const [menuSelected, setMenuSelected] = useState('inicio')
   let navigate = useNavigate()
+
+  const navi = useNavigate()
+  const [cookies] = useCookies(['access-token'])
+
+  useEffect(() => {
+    const token = cookies['access-token']
+    checkLogin(token, navi, null)
+  }, [])
 
   useEffect(() => {
     setMenuSelected(window.location.pathname.slice(1))

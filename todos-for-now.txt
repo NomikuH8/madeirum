@@ -2,7 +2,11 @@ server:
 - file upload
 
 client:
-- sign in page
-- login page
-- token cookie
-- auto logout (verify token)
+- logo
+- root css
+- change fonts (maybe)
+- home page
+- search page
+- orders page
+- account page
+- logout
