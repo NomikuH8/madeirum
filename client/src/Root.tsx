@@ -30,7 +30,7 @@ function Root() {
           <button className="loginBtn" onClick={() => handleClick('/login')}>Fazer login</button>
           <button className="cadastroBtn" onClick={() => handleClick('/cadastro')}>Criar conta</button>
         </div>
-      <span id="about">Feito por {meuLink}. Código fonte: {codigoFonte}</span>
+        <span id="about">Feito por {meuLink}. Código fonte: {codigoFonte}</span>
       </div>
     </Div>
   )
