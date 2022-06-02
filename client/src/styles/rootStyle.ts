@@ -23,6 +23,10 @@ background-size: cover;
   gap: 30px
 }
 
+img {
+  height: 25vh;
+}
+
 button, button:focus, button:active {
   outline: none;
   border: 0px solid transparent;

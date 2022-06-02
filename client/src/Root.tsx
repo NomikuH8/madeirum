@@ -22,10 +22,10 @@ function Root() {
   return (
     <Div>
       <div id="whiteCover">
-        <img src={getFile('favicon.ico')} alt="" />
+        <img src={getFile('logo.svg')} alt="" />
         <div>
           <button className="loginBtn" onClick={() => handleClick('/login')}>Fazer login</button>
-          <button className="cadastroBtn" onClick={() => handleClick('/cadastrar')}>Criar conta</button>
+          <button className="cadastroBtn" onClick={() => handleClick('/cadastro')}>Criar conta</button>
         </div>
       </div>
     </Div>

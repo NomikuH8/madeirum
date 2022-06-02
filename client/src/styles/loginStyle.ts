@@ -25,7 +25,7 @@ button:hover {
 
 input {
   outline: none;
-  border-radius: 3px;
+  border-radius: 9px;
   border: 3px dashed #717171;
   width: 50vw;
   height: 5vh;
