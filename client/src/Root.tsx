@@ -19,6 +19,9 @@ function Root() {
     navi(to)
   }
 
+  const meuLink = <a href="https://github.com/NomikuH8">NomikuH8</a>
+  const codigoFonte = <a href="https://github.com/NomikuH8/madeirum">Github</a>
+
   return (
     <Div>
       <div id="whiteCover">
@@ -27,6 +30,7 @@ function Root() {
           <button className="loginBtn" onClick={() => handleClick('/login')}>Fazer login</button>
           <button className="cadastroBtn" onClick={() => handleClick('/cadastro')}>Criar conta</button>
         </div>
+      <span id="about">Feito por {meuLink}. Código fonte: {codigoFonte}</span>
       </div>
     </Div>
   )

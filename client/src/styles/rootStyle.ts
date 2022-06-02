@@ -50,7 +50,17 @@ button, button:focus, button:active {
 .cadastroBtn {
   background-color: transparent;
   border: 5px solid #bb3a61;
-  color: rgba(0, 0, 0, 0.8)
+  color: rgba(0, 0, 0, 0.8);
+}
+
+#about {
+  position: absolute;
+  bottom: 10px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#about > a, #about > a:visited {
+  color: rgba(0, 0, 0, 0.8);
 }
 `
 
