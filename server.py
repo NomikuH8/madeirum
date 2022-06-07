@@ -223,7 +223,7 @@ def logar_usuario():
 def deslogar_usuario():
     args = request.args
     try:
-        token = args['token']
+        token = args['access_token']
     except:
         return { 'help': 'missing arguments', 'success': False }
     

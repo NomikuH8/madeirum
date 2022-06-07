@@ -3,7 +3,9 @@ import { NavigateFunction } from "react-router"
 export {
   getFile,
   getImage,
-  checkLogin
+  checkLogin,
+  getUser,
+  logoutUser
 }
 
 const mainFolder = '/client/build/'
@@ -20,7 +22,7 @@ function getImage(image: string) {
 async function checkLogin(token: string, navi: NavigateFunction, setWentWrong: any) {
   const url = document.location.pathname
 
-  if (token === undefined) {
+  if (token === undefined || token === '') {
     if (
       !(url === '/' ||
         url === '/login' ||
@@ -59,4 +61,18 @@ async function checkLogin(token: string, navi: NavigateFunction, setWentWrong: a
   }
 
   setWentWrong('Login expirado, realize-o de novo')
+}
+
+async function getUser(token: string, state: any) {
+  let user = await fetch(`/api/get_usuario?access_token=${token}`)
+  .then(res => res.json())
+
+  state(user)
+}
+
+async function logoutUser(token: string, delCookie: any) {
+  await fetch(`/api/deslogar_usuario?access_token=${token}`, {
+    method: 'POST'
+  })
+  delCookie('access-token')
 }

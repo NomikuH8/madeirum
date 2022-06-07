@@ -26,6 +26,7 @@ background-size: cover;
 
 img {
   height: 25vh;
+  min-height: 170px;
 }
 
 button, button:focus, button:active {
