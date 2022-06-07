@@ -20,7 +20,8 @@ background-size: cover;
   width: 100%;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.7);
-  gap: 30px
+  background-color: rgba(0, 0, 0, 0.7);
+  gap: 30px;
 }
 
 img {
@@ -43,24 +44,24 @@ button, button:focus, button:active {
   justify-content: center;
 }
 
-.loginBtn {
+.loginBtn, .cadastroBtn {
   color: rgba(255, 255, 255, 0.9);
 }
 
 .cadastroBtn {
   background-color: transparent;
   border: 5px solid #bb3a61;
-  color: rgba(0, 0, 0, 0.8);
 }
 
 #about {
   position: absolute;
   bottom: 10px;
   color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 #about > a, #about > a:visited {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 `
 
