@@ -1,4 +1,4 @@
-import { getFile } from "./utility/utils"
+import { getFile } from "../utility/utils"
 
 function Pedidos() {
   return (

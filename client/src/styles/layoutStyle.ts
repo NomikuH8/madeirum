@@ -1,17 +1,13 @@
-#root {
-  display: flex;
-  height: 100%;
-}
+import styled from 'styled-components'
 
-nav {
-  display: flex;
-  width: 100%;
-  height: fit-content;
-  margin: 0;
-  background-color: #70233a;
-}
+const LayoutNav = styled.nav`
+display: flex;
+width: 100%;
+height: fit-content;
+margin: 0;
+background-color: #70233a;
 
-nav > ul {
+ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -22,7 +18,7 @@ nav > ul {
   align-items: center;
 }
 
-nav > ul > button {
+ul > button {
   text-decoration: none;
   color: #70233a;
   display: flex;
@@ -56,17 +52,18 @@ button > li {
   /* background-color: #5d172c; */
   background-color: #e57596;
 }
+`
 
-.App, #content {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  overflow-y: auto;
-  scrollbar-width: none; /* hide scrollbar in firefox */
-  -ms-overflow-style: none; /* IE and Edge, thank god idc for IE */
-}
+const LayoutContent = styled.div`
+display: flex;
+flex-direction: column;
+flex: 1 1 auto;
+overflow-y: auto;
+scrollbar-width: none; /* hide scrollbar in firefox */
+-ms-overflow-style: none; /* IE and Edge, thank god idc for IE */
+`
 
-/* hide scrollbar in chrome */
-.App::-webkit-scrollbar, #content::-webkit-scrollbar {
-  display: none;
+export {
+  LayoutNav,
+  LayoutContent
 }

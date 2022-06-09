@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { getFile, getUser, logoutUser } from "./utility/utils"
+import { getFile, getUser, logoutUser } from "../utility/utils"
 import { Close, Info, Logout } from "@mui/icons-material"
 import { useEffect, useState } from "react"
-import ContaDiv from "./styles/contaStyle"
+import ContaDiv from "../styles/contaStyle"
 import { useCookies } from "react-cookie"
 import { useNavigate } from "react-router"
 

@@ -2,9 +2,9 @@
 
 import { useCookies, withCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
-import { checkLogin } from './utility/utils';
+import { checkLogin } from '../utility/utils';
 import { useEffect, useState } from 'react';
-import LoginDiv from './styles/loginStyle';
+import LoginDiv from '../styles/loginStyle';
 
 function Cadastro() {
   const [wentWrong, setWentWrong] = useState('')

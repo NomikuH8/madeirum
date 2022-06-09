@@ -9,9 +9,10 @@ import {
 
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router";
-import { checkLogin } from "./utility/utils"; 
+import { LayoutContent, LayoutNav } from "../styles/layoutStyle";
+import { checkLogin } from "../utility/utils"; 
 import { useCookies } from "react-cookie";
-import './css/layout.css';
+import AppDiv from "../styles/appStyle";
 
 function Layout() {
   const [menuSelected, setMenuSelected] = useState('inicio')
@@ -48,19 +49,19 @@ function Layout() {
   }
 
   return (
-    <>
-      <div id="content">
+    <AppDiv>
+      <LayoutContent id="content">
         <Outlet />
-      </div>
-      <nav>
+      </LayoutContent>
+      <LayoutNav>
         <ul>
           <button onClick={() => handleClick('inicio', '/inicio')}>{choseIcons[0]}</button>
           <button onClick={() => handleClick('pesquisar', '/pesquisar')}>{choseIcons[1]}</button>
           <button onClick={() => handleClick('pedidos', '/pedidos')}>{choseIcons[2]}</button>
           <button onClick={() => handleClick('conta', '/conta')}>{choseIcons[3]}</button>
         </ul>
-      </nav>
-    </>
+      </LayoutNav>
+    </AppDiv>
   )
 }
 

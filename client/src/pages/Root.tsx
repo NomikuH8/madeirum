@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { checkLogin, getFile } from "./utility/utils";
+import { checkLogin, getFile } from "../utility/utils";
 import { useNavigate } from 'react-router';
 import { useCookies } from "react-cookie";
-import RootDiv from "./styles/rootStyle";
+import RootDiv from "../styles/rootStyle";
 import { useEffect } from "react";
 
 function Root() {
