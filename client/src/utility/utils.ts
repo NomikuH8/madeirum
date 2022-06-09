@@ -8,7 +8,12 @@ export {
   logoutUser
 }
 
-const mainFolder = '/client/build/'
+// For development:
+const mainFolder = ''
+
+// For production:
+// const mainFolder = '/client/build/'
+
 const imageFolder = mainFolder + 'images/'
 
 function getFile(file: string) {
@@ -42,7 +47,6 @@ async function checkLogin(token: string, navi: NavigateFunction, setWentWrong: a
   .catch(reason => setWentWrong('Não foi possível verificar usuário já existente'))
 
   if (Object.keys(data).length < 3) {
-    console.log(url)
     if (
       !(
         url === '/login' ||

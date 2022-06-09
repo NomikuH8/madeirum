@@ -1,7 +1,7 @@
 function Pesquisar() {
   return (
     <>
-    pesquisa page
+      pesquisar page
     </>
   )
 }

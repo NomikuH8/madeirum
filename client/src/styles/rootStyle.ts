@@ -3,7 +3,7 @@ import { getFile } from '../utility/utils'
 
 const bg = getFile('root-bg.jpg')
 
-const Div = styled.div`
+const RootDiv = styled.div`
 display: flex;
 flex: 1 1 auto;
 flex-direction: column;
@@ -66,4 +66,4 @@ button, button:focus, button:active {
 }
 `
 
-export default Div
+export default RootDiv

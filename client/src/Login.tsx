@@ -4,7 +4,7 @@ import { useCookies, withCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
 import { checkLogin } from './utility/utils';
 import { useEffect, useState } from 'react';
-import Div from './styles/loginStyle';
+import LoginDiv from './styles/loginStyle';
 
 function Login() {
   const [wentWrong, setWentWrong] = useState('')
@@ -43,7 +43,7 @@ function Login() {
   }
 
   return (
-    <Div>
+    <LoginDiv>
       <p>Login</p>
       <form onSubmit={(e) => enviarLogin(e)} name='loginForm'>
         <div id="emailDiv">
@@ -62,7 +62,7 @@ function Login() {
         <button type="submit">Logar</button>
       </form>
       <Link to={'/cadastro'}>Não tenho uma conta :(</Link>
-    </Div>
+    </LoginDiv>
   )
 }
 

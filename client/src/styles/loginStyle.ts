@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Div = styled.div`
+const LoginDiv = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
@@ -79,4 +79,4 @@ form {
 }
 `
 
-export default Div
+export default LoginDiv

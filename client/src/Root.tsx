@@ -3,7 +3,7 @@
 import { checkLogin, getFile } from "./utility/utils";
 import { useNavigate } from 'react-router';
 import { useCookies } from "react-cookie";
-import Div from "./styles/rootStyle";
+import RootDiv from "./styles/rootStyle";
 import { useEffect } from "react";
 
 function Root() {
@@ -23,7 +23,7 @@ function Root() {
   const codigoFonte = <a href="https://github.com/NomikuH8/madeirum">Github</a>
 
   return (
-    <Div>
+    <RootDiv>
       <div id="whiteCover">
         <img src={getFile('logo.svg')} alt="" />
         <div>
@@ -32,7 +32,7 @@ function Root() {
         </div>
         <span id="about">Feito por {meuLink}. Código fonte: {codigoFonte}</span>
       </div>
-    </Div>
+    </RootDiv>
   )
 }
 

@@ -4,7 +4,7 @@ import { useCookies, withCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
 import { checkLogin } from './utility/utils';
 import { useEffect, useState } from 'react';
-import Div from './styles/loginStyle';
+import LoginDiv from './styles/loginStyle';
 
 function Cadastro() {
   const [wentWrong, setWentWrong] = useState('')
@@ -51,7 +51,7 @@ function Cadastro() {
   }
 
   return (
-    <Div>
+    <LoginDiv>
       <p>Cadastro</p>
       <form onSubmit={(e) => enviarCadastro(e)} name='loginForm'>
         <div id="nomeDiv">
@@ -82,7 +82,7 @@ function Cadastro() {
         <button type="submit">Cadastrar</button>
       </form>
       <Link to={'/login'}>Já tenho uma conta</Link>
-    </Div>
+    </LoginDiv>
   )
 }
 

@@ -22,6 +22,7 @@ div > div {
   align-items: center;
   justify-content: space-between;
   margin: 10px 20px;
+  margin-top: 0px;
   font-size: 18pt;
 }
 
