@@ -112,12 +112,11 @@ conn.commit()
 
 @app.route('/api/get_usuario')
 def get_usuario():
-    args = request.args
     token = ''
     try:
-        token = args['access_token']
+        token = request.cookies['access-token']
     except:
-        return { 'help': 'missing arguments', 'success': False }
+        return { 'help': 'not able to get token', 'success': False }
 
     curr.execute('SELECT id_usuario FROM usuarios_auth WHERE auth_token=%s', [token])
 
@@ -148,17 +147,17 @@ def get_usuario():
 
 @app.route('/api/cadastrar_usuario', methods=['POST'])
 def cadastrar_usuario():
-    args = request.args
-
     nome = ''
     email = ''
     senha = ''
+
+    body = request.json
     try:
-        nome = args['nome']
-        email = args['email']
-        senha = utils.encrypt_password(args['senha'])
+        nome = body['nome']
+        email = body['email']
+        senha = utils.encrypt_password(body['senha'])
     except:
-        return { 'help': 'missing arguments', 'success': False }
+        return { 'help': 'not able to get request body', 'success': False }
     
     curr.execute("SELECT email FROM usuarios WHERE email=%s", [email])
     data = []
@@ -178,16 +177,15 @@ def cadastrar_usuario():
 
 @app.route('/api/logar_usuario', methods=['POST'])
 def logar_usuario():
-    args = request.args 
-
     email = ''
     senha = ''
 
+    body = request.json
     try:
-        email = args['email']
-        senha = args['senha']
+        email = body['email']
+        senha = body['senha']
     except:
-        return { 'help': 'missing arguments', 'success': False }
+        return { 'help': 'not able to get request body', 'success': False }
     
     curr.execute('SELECT id_usuario, nome, email, senha FROM usuarios WHERE email=%s', [email])
     data = []
@@ -221,9 +219,8 @@ def logar_usuario():
 
 @app.route('/api/deslogar_usuario', methods=['POST'])
 def deslogar_usuario():
-    args = request.args
     try:
-        token = args['access_token']
+        token = request.cookies['access-token']
     except:
         return { 'help': 'missing arguments', 'success': False }
     

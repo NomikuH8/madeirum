@@ -24,8 +24,16 @@ function Login() {
     let email: string = e.target[0].value
     let senha: string = e.target[1].value
 
-    let data = await fetch(`/api/logar_usuario?email=${email}&senha=${senha}`, {
-      method: 'POST'
+    let data = await fetch(`/api/logar_usuario`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        senha: senha
+      })
     }).then(res => res.json())
     .catch(reason => setWentWrong('Algo inesperado aconteceu... Tente de novo depois'))
 

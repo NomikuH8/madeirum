@@ -42,7 +42,7 @@ async function checkLogin(token: string, navi: NavigateFunction, setWentWrong: a
 
   setWentWrong('Checando se o token existente é válido...')
 
-  let data = await fetch(`/api/get_usuario?access_token=${token}`)
+  let data = await fetch(`/api/get_usuario`)
   .then(res => res.json())
   .catch(reason => setWentWrong('Não foi possível verificar usuário já existente'))
 
@@ -67,16 +67,16 @@ async function checkLogin(token: string, navi: NavigateFunction, setWentWrong: a
   setWentWrong('Login expirado, realize-o de novo')
 }
 
-async function getUser(token: string, state: any) {
-  let user = await fetch(`/api/get_usuario?access_token=${token}`)
+async function getUser(state: any) {
+  let user = await fetch(`/api/get_usuario`)
   .then(res => res.json())
 
   state(user)
 }
 
-async function logoutUser(token: string, delCookie: any) {
-  await fetch(`/api/deslogar_usuario?access_token=${token}`, {
-    method: 'POST'
+async function logoutUser(delCookie: any) {
+  await fetch(`/api/deslogar_usuario`, {
+    method: 'POST',
   })
   delCookie('access-token')
 }

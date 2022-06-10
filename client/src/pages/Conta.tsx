@@ -14,7 +14,7 @@ function Conta() {
   const navi = useNavigate()
 
   const handleLogout = () => {
-    logoutUser(cookies['access-token'], delCookie)
+    logoutUser(delCookie)
     navi('/')
   }
 
@@ -53,15 +53,13 @@ function Conta() {
   )
 
   useEffect(() => {
-    getUser(cookies['access-token'], setUser)
+    getUser(setUser)
     setActiveMenu(mainMenu)
     // eslint-disable-next-line
   }, [cookies])
 
   if (user === {})
     return <div className="loading">Loading...</div>
-
-
 
 
   return (

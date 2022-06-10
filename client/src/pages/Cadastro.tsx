@@ -32,7 +32,16 @@ function Cadastro() {
 
     let url = `/api/cadastrar_usuario?nome=${nome}&email=${email}&senha=${senha}`
     let data = await fetch(url, {
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nome: nome,
+        email: email,
+        senha: senha
+      })
     })
     .then(res => res.json())
     .catch((reason => setWentWrong('Algo inesperado aconteceu... Tente de novo depois')))
