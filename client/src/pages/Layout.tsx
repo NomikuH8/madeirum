@@ -7,9 +7,9 @@ import {
   Article, ArticleOutlined,
 } from "@mui/icons-material"
 
+import { LayoutContent, LayoutNav } from "../styles/layoutStyle";
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router";
-import { LayoutContent, LayoutNav } from "../styles/layoutStyle";
 import { checkLogin } from "../utility/utils"; 
 import { useCookies } from "react-cookie";
 import AppDiv from "../styles/appStyle";

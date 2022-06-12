@@ -1,7 +1,5 @@
 from dotenv import dotenv_values
 
-from flask import render_template
-from flask import make_response
 from flask import send_file
 from flask import request
 from flask import Flask
