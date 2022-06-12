@@ -1,6 +1,7 @@
 import api_funcs.users as users
 from flask import jsonify
 from flask import request
+import os
 
 def get_categories(conn, curr):
     curr.execute('SELECT * FROM categorias')
@@ -53,7 +54,18 @@ def add_category(conn, curr):
 
 def change_category(conn, curr):
     # todo: check authorization
-    # todo: this
+    # todo: finish this
+    from_name = ''
+    to_name = ''
+
+    curr.execute('SELECT id_categoria FROM categorias WHERE nome_categoria = %s', [from_name])
+
+    row_id
+    try:
+        row_id = curr.fetchone()[0]
+    except:
+        return { 'help': 'category does not exist', 'success': False }
+
     curr.execute('UPDATE categorias SET foto_categoria = %s WHERE nome_categoria = %s')
 
 def del_category(conn, curr):
