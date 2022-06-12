@@ -38,7 +38,7 @@ function Login() {
     .catch(reason => setWentWrong('Algo inesperado aconteceu... Tente de novo depois'))
 
     if (data['success']) {
-      setCookie('access-token', data['token'], { path: '/' })
+      setCookie('access-token', data['token'], { path: '/', maxAge: 259200 })
       navi('/inicio')
       return
     }

@@ -5,7 +5,7 @@ display: flex;
 `
 
 const AdminLayoutContent = styled.div`
-
+margin: 10px
 `
 
 const AdminNav = styled.nav`
