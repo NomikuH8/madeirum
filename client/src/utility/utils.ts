@@ -9,7 +9,7 @@ export {
 }
 
 // For development:
-const mainFolder = ''
+const mainFolder = '/'
 
 // For production:
 // const mainFolder = '/client/build/'

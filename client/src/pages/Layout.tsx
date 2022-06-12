@@ -16,7 +16,6 @@ import AppDiv from "../styles/appStyle";
 
 function Layout() {
   const [menuSelected, setMenuSelected] = useState('inicio')
-  let navigate = useNavigate()
 
   const navi = useNavigate()
   const [cookies] = useCookies(['access-token'])
@@ -32,7 +31,7 @@ function Layout() {
 
   const handleClick = (stateName: string, path: string) => {
     setMenuSelected(stateName)
-    navigate(path)
+    navi(path)
   }
 
   let icons: any = {

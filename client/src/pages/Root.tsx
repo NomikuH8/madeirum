@@ -25,7 +25,7 @@ function Root() {
   return (
     <RootDiv>
       <div id="whiteCover">
-        <img src={getFile('logo.svg')} alt="" />
+        <img src={getFile('logo.svg')} alt="logo" />
         <div>
           <button className="loginBtn" onClick={() => handleClick('/login')}>Fazer login</button>
           <button className="cadastroBtn" onClick={() => handleClick('/cadastro')}>Criar conta</button>

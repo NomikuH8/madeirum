@@ -45,11 +45,8 @@ button > li {
 }
 
 .selected {
-  /* pointer-events: none; */
   padding: 0.8vh 0;
-  /* border-radius: 10px; */
   border-radius: 0 0 10px 10px;
-  /* background-color: #5d172c; */
   background-color: #e57596;
 }
 `
