@@ -5,7 +5,10 @@ export {
   getImage,
   checkLogin,
   getUser,
-  logoutUser
+  logoutUser,
+
+  getCategorias,
+  getCategoriaFoto
 }
 
 // For development:
@@ -18,6 +21,13 @@ const imageFolder = mainFolder + 'images/'
 
 function getFile(file: string) {
   return mainFolder + file
+}
+
+function getCategoriaFoto(file: string) {
+  if (file === null || file === '') {
+    return mainFolder + 'images/categoria-placeholder.jpg'
+  }
+  return mainFolder + 'images/categorias/' + file
 }
 
 function getImage(image: string) {
@@ -79,4 +89,9 @@ async function logoutUser(delCookie: any) {
     method: 'POST',
   })
   delCookie('access-token')
+}
+
+async function getCategorias(setCategorias: any) {
+  let data = await fetch(`/api/get_categorias`).then(res => res.json())
+  setCategorias(data)
 }

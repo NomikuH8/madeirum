@@ -1,44 +1,27 @@
-import { useState } from "react"
+import AdminCategoriasDiv from "../../styles/admin/adminCategoriasStyle"
+import { getCategoriaFoto, getCategorias } from "../../utility/utils"
+import { useEffect, useState } from "react"
 
 function AdminCategorias() {
-  const [wentWrong, setWentWrong] = useState('')
-  const sendForm = async (e: any) => {
-    e.preventDefault()
+  const [categorias, setCategorias] = useState([])
 
-    let nome = e.target[0].value
-    let foto = e.target[1].files[0]
-    let data: any = new FormData()
+  useEffect(() => {
+    getCategorias(setCategorias)
+  }, [])
 
-    if (foto !== undefined)
-      data.append('foto', foto)
-    
-    if (foto === undefined)
-      data = JSON.stringify({})
-
-    let respImage = await fetch(`/api/add_categorias?nome_categoria=${nome}`, {
-      method: 'POST',
-      body: data
-    }).then(res => res.json())
-
-    if (respImage['success'])
-      setWentWrong('Categoria criada!')
-  }
+  if (categorias === [])
+    return (<div>Carregando...</div>)
 
   return (
-    <form onSubmit={(e) => sendForm(e)}>
-      <div>
-        <label htmlFor="nome">Nome categoria:</label>
-        <br />
-        <input type="text" name="nome" id="nome" required />
+    <AdminCategoriasDiv>
+      <div id="categorias">
+        {categorias.map((item: any) => { return (
+          <div style={{backgroundImage: `url(${getCategoriaFoto(item.foto_categoria)})`}}>
+            <span>{item.nome_categoria}</span>
+          </div>
+        )})}
       </div>
-      <div>
-        <label htmlFor="nome">Foto categoria:</label>
-        <br />
-        <input type="file" name="foto" id="foto" accept="image/*" />
-      </div>
-      <span>{wentWrong}</span>
-      <input type="submit" value="Criar categoria" />
-    </form>
+    </AdminCategoriasDiv>
   )
 }
 

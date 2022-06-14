@@ -2,10 +2,13 @@ import styled from 'styled-components'
 
 const AdminDiv = styled.div`
 display: flex;
+flex: 1 1 auto;
 `
 
 const AdminLayoutContent = styled.div`
-margin: 10px
+margin: 10px;
+display: flex;
+flex: 1 1 auto;
 `
 
 const AdminNav = styled.nav`

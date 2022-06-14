@@ -33,8 +33,11 @@ function AdminLayout() {
         </div>
         <ul>
           {menuOptions.map((item) =>
-            <button className={item.path === document.location.pathname ? 'selected' : ''} onClick={() => moveToPath(item.path)}><li>{item.text}</li></button>)
-          }
+            <button 
+              className={item.path === document.location.pathname ? 'selected' : ''}
+              onClick={() => moveToPath(item.path)}>
+                <li>{item.text}</li>
+            </button>)}
         </ul>
       </AdminNav>
       <AdminLayoutContent id="content">

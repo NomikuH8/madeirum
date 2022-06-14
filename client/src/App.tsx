@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router";
 
+import AdminCategoriasEditar from "./pages/admin/AdminCategoriasEditar";
 import AdminMudarPermissoes from "./pages/admin/AdminMudarPermissoes";
 import AdminCategorias from "./pages/admin/AdminCategorias";
 import AdminLanches from "./pages/admin/AdminLanches";
@@ -32,6 +33,7 @@ function App() {
           <Route path="admin/inicio" element={<AdminHome />} />
           <Route path="admin/categorias" element={<AdminCategorias />} />
           <Route path="admin/:categoria/lanches" element={<AdminLanches />} />
+          <Route path="admin/:categoria/editar" element={<AdminCategoriasEditar />} />
           <Route path="admin/mudar-permissoes" element={<AdminMudarPermissoes />} />
         </Route>
       </Routes>
