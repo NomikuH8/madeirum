@@ -54,19 +54,40 @@ def add_category(conn, curr):
 
 def change_category(conn, curr):
     # todo: check authorization
-    # todo: finish this
     from_name = ''
     to_name = ''
+    path = ''
 
-    curr.execute('SELECT id_categoria FROM categorias WHERE nome_categoria = %s', [from_name])
+    uploaded_img = {}
 
-    row_id
     try:
-        row_id = curr.fetchone()[0]
+        uploaded_img = request.files['foto']
     except:
-        return { 'help': 'category does not exist', 'success': False }
+        uploaded_img['filename'] = ''
 
-    curr.execute('UPDATE categorias SET foto_categoria = %s WHERE nome_categoria = %s')
+    if type(uploaded_img) != dict:
+        if uploaded_img.filename != '':
+            path = 'images/categories/' + to_name + '.' + uploaded_img.filename.split('.')[1]
+            uploaded_img.save(path)
+
+    curr.execute('SELECT id_categoria, foto_categoria FROM categorias WHERE nome_categoria = %s', [from_name])
+
+    row_id = None
+    try:
+        data = curr.fetchone()
+        row_id = data[0]
+        if path != '' and path != data[1]:
+            os.remove(data[1])
+    except:
+        return { 'help': 'row id not found', 'success': False }
+
+    curr.execute('UPDATE categorias SET foto_categoria = %s, nome_categoria = %s WHERE id_categoria = %s', [
+        path, to_name, row_id
+    ])
+    conn.commit()
+
+    return { 'success': True }
+
 
 def del_category(conn, curr):
     # todo: check authorization
