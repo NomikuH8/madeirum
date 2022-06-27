@@ -6,6 +6,12 @@ const AdminCategoriasDiv = styled.div`
 display: flex;
 flex: 1 1 auto;
 
+button {
+  outline: none;
+  border: 0px solid transparent;
+  padding: 0;
+}
+
 #categorias {
   text-transform: capitalize;
   display: flex;
@@ -13,7 +19,7 @@ flex: 1 1 auto;
   gap: 10px;
 }
 
-#categorias > div {
+#categorias > button {
   width: 20vw;
   height: 10vh;
   border-radius: 20px;
@@ -21,9 +27,11 @@ flex: 1 1 auto;
   display: flex;
 }
 
-#categorias > div > span {
+#categorias > button > span {
   background-color: rgba(0,0,0,0.4);
   color: white;
+  font-weight: bold;
+  font-size: 1rem;
 
   display: flex;
   justify-content: center;
@@ -33,11 +41,12 @@ flex: 1 1 auto;
   border-radius: 20px;
 }
 
+#categorias > button > span:hover {
+}
+
 .no-photo {
   background-image: url('/images/categoria-placeholder.jpg')
 }
 `
 
-  // width: 20vw;
-  // height: 10vh;
 export default AdminCategoriasDiv

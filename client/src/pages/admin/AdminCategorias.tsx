@@ -16,9 +16,9 @@ function AdminCategorias() {
     <AdminCategoriasDiv>
       <div id="categorias">
         {categorias.map((item: any) => { return (
-          <div style={{backgroundImage: `url(${getCategoriaFoto(item.foto_categoria)})`}}>
+          <button style={{backgroundImage: `url(${getCategoriaFoto(item.foto_categoria)})`}}>
             <span>{item.nome_categoria}</span>
-          </div>
+          </button>
         )})}
       </div>
     </AdminCategoriasDiv>
