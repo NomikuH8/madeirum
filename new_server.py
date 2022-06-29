@@ -140,6 +140,10 @@ def deslogar_usuario():
 def get_categorias():
     return categories.get_categories(conn, curr)
 
+@app.route('/api/get_lanches')
+def get_lanches():
+    return categories.get_lanches(conn, curr)
+
 @app.route('/api/add_categorias', methods=['POST'])
 def add_categorias():
     return categories.add_category(conn, curr)

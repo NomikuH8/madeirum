@@ -7,6 +7,7 @@ export {
   getUser,
   logoutUser,
 
+  getLanches,
   getCategorias,
   getCategoriaFoto
 }
@@ -94,5 +95,10 @@ async function logoutUser(delCookie: any) {
 async function getCategorias(setCategorias: any) {
   let data = await fetch(`/api/get_categorias`).then(res => res.json())
   setCategorias(data)
-  return data === null
+}
+
+async function getLanches(setLanches: any, categoria: string) {
+  let data = await fetch(`/api/get_lanches?categoria=${categoria}`)
+                    .then(res => res.json())
+  setLanches(data)
 }
