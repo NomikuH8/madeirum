@@ -94,4 +94,5 @@ async function logoutUser(delCookie: any) {
 async function getCategorias(setCategorias: any) {
   let data = await fetch(`/api/get_categorias`).then(res => res.json())
   setCategorias(data)
+  return data === null
 }
