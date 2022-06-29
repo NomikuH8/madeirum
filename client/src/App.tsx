@@ -9,6 +9,7 @@ import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHome from "./pages/admin/AdminHome";
 import Pesquisar from "./pages/Pesquisar";
 import Cadastro from "./pages/Cadastro";
+import Lanches from "./pages/Lanches";
 import Pedidos from "./pages/Pedidos";
 import Layout from "./pages/Layout";
 import Conta from "./pages/Conta";
@@ -28,6 +29,7 @@ function App() {
           <Route path="pesquisar" element={<Pesquisar />} />
           <Route path="pedidos" element={<Pedidos />} />
           <Route path="conta" element={<Conta />} />
+          <Route path=":categoria/lanches" element={<Lanches />} />
         </Route>
         <Route element={<AdminLayout />}>
           <Route path="admin/inicio" element={<AdminHome />} />
