@@ -65,7 +65,10 @@ def get_lanches(conn, curr):
             'foto_produto': i[4],
         })
     
-    return jsonify(data)
+    return jsonify({
+        'categoria': category,
+        'lanches': data
+    })
 
 
 def add_category(conn, curr):

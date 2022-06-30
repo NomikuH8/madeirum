@@ -97,8 +97,9 @@ async function getCategorias(setCategorias: any) {
   setCategorias(data)
 }
 
-async function getLanches(setLanches: any, categoria: string) {
+async function getLanches(setCategoria: any, setLanches: any, categoria: string) {
   let data = await fetch(`/api/get_lanches?categoria=${categoria}`)
-                    .then(res => res.json())
-  setLanches(data)
+                        .then(res => res.json())
+  setCategoria(data['categoria'])
+  setLanches(data['lanches'])
 }
