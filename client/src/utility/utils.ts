@@ -8,6 +8,7 @@ export {
   logoutUser,
 
   getLanches,
+  getLancheFoto,
   getCategorias,
   getCategoriaFoto
 }
@@ -25,10 +26,15 @@ function getFile(file: string) {
 }
 
 function getCategoriaFoto(file: string) {
-  if (file === null || file === '') {
+  if (file === null || file === '')
     return mainFolder + 'images/categoria-placeholder.jpg'
-  }
   return mainFolder + 'images/categorias/' + file
+}
+
+function getLancheFoto(file: string) {
+  if (file === null || file === '')
+    return mainFolder + 'images/lanche-placeholder.jpg'
+  return mainFolder + 'images/lanches/' + file
 }
 
 function getImage(image: string) {
@@ -51,7 +57,7 @@ async function checkLogin(token: string, navi: NavigateFunction, setWentWrong: a
   if (setWentWrong === null)
     setWentWrong = (a: any) => {}
 
-  setWentWrong('Checando se o token existente é válido...')
+  setWentWrong('Login expirado!')
 
   let data = await fetch(`/api/get_usuario`)
   .then(res => res.json())

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 
 function Lanches() {
+  const [selected, setSelected]: any = useState()
   const [lanches, setLanches]: any = useState([])
   const [cat, setCat]: any = useState({})
   const { categoria } = useParams()
@@ -28,7 +29,14 @@ function Lanches() {
       </div>
       <div className="lanches">
         {lanches.map((item: any, idx: any) => {
-          return <LancheButton key={idx} lanche={item} />
+          return (
+            <LancheButton
+              key={idx}
+              className={selected === idx ? 'expanded' : ''}
+              onClick={() => setSelected(idx)}
+              lanche={item}
+            />
+          )
         })}
       </div>
     </LanchesDiv>
