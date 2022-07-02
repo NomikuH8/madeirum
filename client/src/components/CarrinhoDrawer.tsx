@@ -1,5 +1,6 @@
 import CarrinhoDrawerDiv from "../styles/carrinhoDrawerStyle"
 import { useNavigate } from "react-router-dom"
+import { ShoppingCart } from "@mui/icons-material"
 
 function CarrinhoDrawer() {
   const navi = useNavigate()
@@ -11,8 +12,7 @@ function CarrinhoDrawer() {
 
   return (
     <CarrinhoDrawerDiv onClick={() => navi('/carrinho')}>
-      <span id="ir-carrinho">Ir para o carrinho</span>
-      <span>{items.length}</span>
+      <span id="itens-no-carrinho"><ShoppingCart />Itens no carrinho: {items.length}</span>
     </CarrinhoDrawerDiv>
   )
 }
