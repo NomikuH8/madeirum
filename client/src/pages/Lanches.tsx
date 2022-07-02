@@ -16,11 +16,15 @@ function Lanches() {
     getLanches(setCat, setLanches, String(categoria))
   }, [])
 
+  const handleLancheClick = (idx: number) => {
+    setSelected(idx)
+  }
+
   if (lanches === [])
     return (
       <div>Carregando...</div>
     )
-
+  
   return (
     <LanchesDiv>
       <div className="info">
@@ -33,7 +37,7 @@ function Lanches() {
             <LancheButton
               key={idx}
               className={selected === idx ? 'expanded' : ''}
-              onClick={() => setSelected(idx)}
+              onClick={() => handleLancheClick(idx)}
               lanche={item}
             />
           )
