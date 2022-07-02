@@ -16,6 +16,7 @@ import Conta from "./pages/Conta";
 import Login from "./pages/Login";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
+import Carrinho from "./pages/Carrinho";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="pesquisar" element={<Pesquisar />} />
           <Route path="pedidos" element={<Pedidos />} />
           <Route path="conta" element={<Conta />} />
+          <Route path="carrinho" element={<Carrinho />} />
           <Route path=":categoria/lanches" element={<Lanches />} />
         </Route>
         <Route element={<AdminLayout />}>

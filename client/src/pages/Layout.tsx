@@ -8,6 +8,7 @@ import {
 } from "@mui/icons-material"
 
 import { LayoutContent, LayoutNav } from "../styles/layoutStyle";
+import CarrinhoDrawer from "../components/CarrinhoDrawer";
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { checkLogin } from "../utility/utils"; 
@@ -52,6 +53,7 @@ function Layout() {
       <LayoutContent id="content">
         <Outlet />
       </LayoutContent>
+      <CarrinhoDrawer />
       <LayoutNav>
         <ul>
           <button onClick={() => handleClick('inicio', '/inicio')}>{choseIcons[0]}</button>
