@@ -1,7 +1,15 @@
 export {
+  getOrders,
   addOrder,
   changeOrder,
   sendOrder
+}
+
+async function getOrders(setOrders: any) {
+  let data = await fetch(`/api/get_orders`)
+                    .then((res) => res.json())
+  
+  setOrders(data)
 }
 
 function addOrder(data: any) {

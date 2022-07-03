@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
+import { sendOrder } from "../utility/orderWrapper"
 import { ShoppingCart } from "@mui/icons-material"
 import CarrinhoDiv from "../styles/carrinhoStyle"
 import { useEffect, useState } from "react"
@@ -39,6 +40,11 @@ function Carrinho() {
     return valorTotal
   }
 
+  const sendOrderBtn = () => {
+    sendOrder()
+    navi('/pedidos')
+  }
+
   let valorTotal = getValorTotal()
 
   return (
@@ -70,7 +76,7 @@ function Carrinho() {
       </div>
       <div className="end-pedido">
         <span id="valor-total">Valor total: R${valorTotal}</span>
-        <button>Finalizar pedido</button>
+        <button onClick={() => sendOrderBtn()}>Finalizar pedido</button>
       </div>
     </CarrinhoDiv>
   )

@@ -1,14 +1,12 @@
 from dotenv import dotenv_values
 
 import api_funcs.categories as categories
+import api_funcs.orders as orders
 import api_funcs.users as users
 from flask import send_file
-from flask import request
 from flask import Flask
 import psycopg2
-import random
 import bcrypt
-import utils
 import sys
 import os
 
@@ -159,6 +157,18 @@ def change_photo_categorias():
 @app.route('/api/delete_categorias', methods=['POST'])
 def del_categorias():
     return categories.del_category(conn, curr)
+
+
+# ------------------ pedidos ------------------- #
+
+@app.route('/api/get_orders')
+def get_orders():
+    return orders.get_orders(conn, curr)
+
+@app.route('/api/confirm_order', methods=['POST'])
+def confirm_order():
+    return orders.confirm_order(conn, curr)
+
 
 
 @app.route('/', defaults={'path': ''})
