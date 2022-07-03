@@ -8,6 +8,14 @@ justify-content: space-between;
 align-items: center;
 user-select: none;
 
+:hover {
+  background-color: #ef7c9f;
+}
+
+svg {
+  fill: #70233a;
+}
+
 #itens-no-carrinho {
   display: flex;
   align-items: center;

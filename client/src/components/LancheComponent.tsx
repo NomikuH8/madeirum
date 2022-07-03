@@ -1,6 +1,6 @@
+import { addOrder } from "../utility/orderWrapper"
 import { getLancheFoto } from "../utility/utils"
 import { ReactElement, useState } from "react"
-import { addOrder } from "../utility/orderWrapper"
 import { useNavigate } from "react-router"
 
 function LancheButton(props: any) {
@@ -28,6 +28,7 @@ function LancheButton(props: any) {
     let data = {
       'id_produto': lanche.id_produto,
       'nome_produto': lanche.nome_produto,
+      'preco_produto': lanche.preco_produto,
       'observation': observation,
       'quantity': quantity,
     }

@@ -2,3 +2,6 @@ main color: #70233a
 secondary color: #e57596
 secondary dim color: #ef7c9f
 nav background: #e9e9ed
+
+red: #fc3f3f
+green: #7efc7e

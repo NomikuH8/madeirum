@@ -5,10 +5,12 @@ import AdminCategoriasEditar from "./pages/admin/AdminCategoriasEditar";
 import AdminMudarPermissoes from "./pages/admin/AdminMudarPermissoes";
 import AdminCategorias from "./pages/admin/AdminCategorias";
 import AdminLanches from "./pages/admin/AdminLanches";
+import CarrinhoEditar from "./pages/CarrinhoEditar";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHome from "./pages/admin/AdminHome";
 import Pesquisar from "./pages/Pesquisar";
 import Cadastro from "./pages/Cadastro";
+import Carrinho from "./pages/Carrinho";
 import Lanches from "./pages/Lanches";
 import Pedidos from "./pages/Pedidos";
 import Layout from "./pages/Layout";
@@ -16,7 +18,6 @@ import Conta from "./pages/Conta";
 import Login from "./pages/Login";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
-import Carrinho from "./pages/Carrinho";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="pedidos" element={<Pedidos />} />
           <Route path="conta" element={<Conta />} />
           <Route path="carrinho" element={<Carrinho />} />
+          <Route path="carrinho/:index/editar" element={<CarrinhoEditar />} />
           <Route path=":categoria/lanches" element={<Lanches />} />
         </Route>
         <Route element={<AdminLayout />}>
