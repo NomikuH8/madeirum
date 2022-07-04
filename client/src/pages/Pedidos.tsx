@@ -22,7 +22,8 @@ function Pedidos() {
     conteudo = orders.map((pedido: any, idx: number) => {
       return (
         <div className="pedido">
-          <span>Pedido #{pedido[0]}</span>
+          <span className="number">Pedido #{pedido[0]}</span>
+          <span className="date">Em: {pedido[1]}</span>
         </div>
       )
     })

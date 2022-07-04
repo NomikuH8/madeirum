@@ -41,10 +41,13 @@ function changeOrder(data: object, idx: number) {
   localStorage.setItem('cart', JSON.stringify(cart))
 }
 
-function sendOrder() {
-  // TO IMPLEMENT
-  fetch(`/api/confirm_order`, {
+async function sendOrder() {
+  await fetch(`/api/confirm_order`, {
     method: 'POST',
-    body: JSON.parse(localStorage.getItem('cart')!)
+    body: localStorage.getItem('cart')!,
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
+  localStorage.removeItem('cart')
 }

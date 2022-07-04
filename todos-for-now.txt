@@ -1,12 +1,19 @@
+database:
+- change pedidos table:
+  - add entregue (boolean)
+  - add entregue_date (timestamp)
+  - add valor total
+- change produtos_pedidos table:
+  - add constraints
+- populate database (produtos, categorias)
+
 server:
-- file upload
+- change get auth method:
+  - now im storing in the database and checking if they are equal,
+    i want to decrypt the cookie to see this
 
 client:
-- logo
-- root css
-- change fonts (maybe)
-- home page
-- search page
-- orders page
-- account page
-- logout
+- pedido page:
+  - i want to see each product in the order,
+    i want to make a "replicate order" button,
+    i want to check the order status

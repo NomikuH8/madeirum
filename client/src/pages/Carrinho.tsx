@@ -21,7 +21,7 @@ function Carrinho() {
   }, [])
 
   const clearCart = () => {
-    localStorage.clear()
+    localStorage.removeItem('cart')
     navi(window.location.pathname)
   }
 
