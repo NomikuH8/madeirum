@@ -39,6 +39,20 @@ flex: 1 1 auto;
 .pedido:hover {
   background-color: #cfcfd3;
 }
+
+.nenhum-pedido {
+  user-select: none;
+  background-color: #e9e9ed;
+  height: 100px;
+  margin: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14pt;
+  padding: 20px;
+  text-align: center;
+}
 `
 
 export default PedidosDiv
