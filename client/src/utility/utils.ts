@@ -17,7 +17,7 @@ export {
 const mainFolder = '/'
 
 // For production:
-// const mainFolder = '/client/build/'
+//const mainFolder = '/client/build/'
 
 const imageFolder = mainFolder + 'images/'
 
@@ -53,7 +53,7 @@ async function checkLogin(token: string, navi: NavigateFunction, setWentWrong: a
     navi('/')
     return
   }
-  
+
   if (setWentWrong === null)
     setWentWrong = (a: any) => {}
 
